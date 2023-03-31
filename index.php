@@ -1,5 +1,12 @@
 <?php
-
+require_once 'Product.php';
+require_once 'Category.php';
+require_once 'Food.php';
+require_once 'Toy.php';
+require_once 'Bed.php';
+require_once 'User.php';
+require_once 'Cart.php';
+require_once 'Order.php';
 
 ?>
 
