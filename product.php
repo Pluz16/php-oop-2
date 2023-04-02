@@ -1,24 +1,44 @@
 <?php
 class Product {
-    protected $id;
-    protected $name;
-    protected $description;
-    protected $price;
-    protected $quantityAvailable;
-    protected $imageUrl;
-    protected $category;
+	private $id;
+	private $nome;
+	private $descrizione;
+	private $prezzo;
+	private $immagine;
+	private $categoria;
 
-    public function __construct($id, $name, $description, $price, $quantityAvailable, $imageUrl, $category) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
-        $this->quantityAvailable = $quantityAvailable;
-        $this->imageUrl = $imageUrl;
-        $this->category = $category;
-    }
+	public function __construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria) {
+		$this->id = $id;
+		$this->nome = $nome;
+		$this->descrizione = $descrizione;
+		$this->prezzo = $prezzo;
+		$this->immagine = $immagine;
+		$this->categoria = $categoria;
+	}
 
+	public function getId() {
+		return $this->id;
+	}
+
+	public function getNome() {
+		return $this->nome;
+	}
+
+	public function getDescrizione() {
+		return $this->descrizione;
+	}
+
+	public function getPrezzo() {
+		return $this->prezzo;
+	}
+
+	public function getImmagine() {
+		return $this->immagine;
+	}
+
+	public function getCategoria() {
+		return $this->categoria;
+	}
 }
-
 ?>
 
