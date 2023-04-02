@@ -14,6 +14,12 @@ $categoria_gatti = new Category(2, 'Gatti', 'cat.png');
 
 $giocattolo_cane = new Toy(1, 'Giocattolo per cane', 'a nice gift for your eDog', 10.99, 'dog_toy.jpg', $categoria_cani);
 $giocattolo_gatto = new Toy(2, 'Giocattolo per gatto', 'a nice gift for your eCat', 9.99, 'cat_toy.jpg', $categoria_gatti);
+$cibo_cane = new Food(3, 'Cibo per cane', 'cibo per cani', 19.99, 'dog_food.jpg', $categoria_cani);
+$cibo_gatto = new Food(4, 'Cibo per gatto', 'cibo per gatti', 15.99, 'cat_food.jpg', $categoria_gatti);
+
+// Array contenente tutti i prodotti
+$prodotti = [$giocattolo_cane, $giocattolo_gatto, $cibo_cane, $cibo_gatto];
+
 
 
 
