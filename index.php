@@ -9,6 +9,14 @@ require_once 'Cart.php';
 require_once 'Order.php';
 
 
+$categoria_cani = new Category(1, 'Cani', 'dog.png');
+$categoria_gatti = new Category(2, 'Gatti', 'cat.png');
+
+$giocattolo_cane = new Toy(1, 'Giocattolo per cane', 'a nice gift for your eDog', 10.99, 'dog_toy.jpg', $categoria_cani);
+$giocattolo_gatto = new Toy(2, 'Giocattolo per gatto', 'a nice gift for your eCat', 9.99, 'cat_toy.jpg', $categoria_gatti);
+
+
+
 
 ?>
 
@@ -26,6 +34,23 @@ require_once 'Order.php';
     <header>
         <h1>Welcome to the Pet Shop</h1>
     </header>
+
+    <div class="product-list">
+        <?php foreach ($prodotti as $prodotto): ?>
+            <div class="product-card">
+                <img src="<?php echo $prodotto->getImmagine(); ?>" alt="<?php echo $prodotto->getNome(); ?>">
+                <h3><?php echo $prodotto->getNome(); ?></h3>
+                <p class="product-description"><?php echo $prodotto->getDescrizione(); ?></p>
+                <p class="product-price"><?php echo $prodotto->getPrezzo(); ?> Euro</p>
+                <p class="product-category"><?php echo $prodotto->getCategoria()->getNome(); ?></p>
+                <p class="product-type"><?php echo ($prodotto->isFood()) ? 'Cibo' : (($prodotto->isToy()) ? 'Giocattolo' : 'Cuccia'); ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+</body>
+</html>
+
 
 
 </body>
