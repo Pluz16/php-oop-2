@@ -25,7 +25,7 @@ $prodotti = [$giocattolo_cane, $giocattolo_gatto, $cibo_cane, $cibo_gatto];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PETZe</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/30410f2966.js" crossorigin="anonymous"></script>
 </head>
 <body>
