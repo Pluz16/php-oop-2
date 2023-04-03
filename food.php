@@ -1,25 +1,29 @@
 <?php
-require_once 'Product.php';
+require_once 'product.php';
 
-class Food extends Product {
+trait Expiration {
     private $scadenza;
 
-    public function __construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria, $scadenza) {
-        parent::__construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria);
+    public function setScadenza($scadenza) {
         $this->scadenza = $scadenza;
     }
 
     public function getScadenza() {
         return $this->scadenza;
     }
-}
 
-trait Expiration {
     public function isExpired() {
-        $now = new DateTime();
-        return $this->getScadenza() < $now;
+        return $this->scadenza < date('Y-m-d');
     }
 }
 
+class Food extends Product {
+    use Expiration;
+
+    public function isFood() {
+        return true;
+    }
+}
 ?>
+
 

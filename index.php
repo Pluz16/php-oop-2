@@ -14,6 +14,10 @@ $giocattolo_gatto = new Toy(2, 'Giocattolo per gatto', 'a nice gift for your eCa
 $cibo_cane = new Food(3, 'Cibo per cane', 'cibo per cani', 19.99, 'dog_food.jpg', $categoria_cani);
 $cibo_gatto = new Food(4, 'Cibo per gatto', 'cibo per gatti', 15.99, 'cat_food.jpg', $categoria_gatti);
 
+// Trait
+$cibo_cane->setScadenza(date('Y-m-d', strtotime('-1 month')));
+
+
 
 $prodotti = [$giocattolo_cane, $giocattolo_gatto,$cibo_cane, $cibo_gatto ];
 ?>
@@ -35,19 +39,24 @@ $prodotti = [$giocattolo_cane, $giocattolo_gatto,$cibo_cane, $cibo_gatto ];
     </header>
 
     <main>
-        <div class="products">
-            <?php for ($i=0; $i<count($prodotti); $i++){ ?>
-                <?php $prodotto = $prodotti[$i]; ?>
-                     <div class="product-card">
-                    <img src="<?php echo $prodotto->getImmagine(); ?>" alt="<?php echo $prodotto->getNome(); ?>">
-                    <h2><?php echo $prodotto->getNome(); ?></h2>
-                    <p><?php echo $prodotto->getDescrizione(); ?></p>
-                    <p><?php echo $prodotto->getPrezzo(); ?> €</p>
-                    <span><?php echo $prodotto->getCategoria()->getIcona() . ' ' . $prodotto->getCategoria()->getNome(); ?></span>
-                    <span><?php echo get_class($prodotto) === 'Toy' ? 'Giocattolo' : (get_class($prodotto) === 'Food' ? 'Cibo' : 'Cuccia'); ?></span>
-                </div>
-            <?php } ?>
-        </div>
+    <div class="products">
+        <?php for ($i=0; $i<count($prodotti); $i++){ ?>
+        <?php $prodotto = $prodotti[$i]; ?>
+            <div class="product-card">
+            <img src="<?php echo $prodotto->getImmagine(); ?>" alt="<?php echo $prodotto->getNome(); ?>">
+            <h2><?php echo $prodotto->getNome(); ?></h2>
+            <p><?php echo $prodotto->getDescrizione(); ?></p>
+        <?php if (get_class($prodotto) === 'Food' && $prodotto->isExpired()) { ?>
+            <p>PRODOTTO SCADUTO</p>
+        <?php } else { ?>
+            <p><?php echo $prodotto->getPrezzo(); ?> €</p>
+        <?php } ?>
+        <span><?php echo $prodotto->getCategoria()->getIcona() . ' ' . $prodotto->getCategoria()->getNome(); ?></span>
+        <span><?php echo get_class($prodotto) === 'Toy' ? 'Giocattolo' : (get_class($prodotto) === 'Food' ? 'Cibo' : 'Cuccia'); ?></span>
+    </div>
+        <?php } ?>
+
+    </div>
     </main>
 
 
