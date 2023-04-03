@@ -7,14 +7,18 @@ class Product {
 	private $immagine;
 	private $categoria;
 
-	public function __construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria) {
-		$this->id = $id;
-		$this->nome = $nome;
-		$this->descrizione = $descrizione;
-		$this->prezzo = $prezzo;
-		$this->immagine = $immagine;
-		$this->categoria = $categoria;
-	}
+    public function __construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria) {
+        if ($prezzo < 0) {
+            throw new NegativePriceException();
+        }
+        
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->descrizione = $descrizione;
+        $this->prezzo = $prezzo;
+        $this->immagine = $immagine;
+        $this->categoria = $categoria;
+    }
 
 	public function getId() {
 		return $this->id;
